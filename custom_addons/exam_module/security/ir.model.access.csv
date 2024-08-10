@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_exam,access_exam,model_exam,,1,1,1,1
+access_exam_registration,access_exam_registration,model_exam_registration,,1,1,1,1
+access_center_management,access_center_management,model_center_management,,1,1,1,1

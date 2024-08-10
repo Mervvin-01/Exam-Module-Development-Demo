@@ -1,0 +1,20 @@
+<odoo>
+    <menuitem id="student_root_menu"
+              name="Student Profile"
+              sequence="3"/>
+
+    <menuitem id="exam_student_management_menu"
+              name="Student"
+              parent="student_root_menu"
+              action="action_student_student"
+              sequence="1"
+              groups="student_group"/>
+
+    <menuitem id="exam_staff_management_menu"
+              name="Student"
+              parent="student_root_menu"
+              action="action_student_staff"
+              sequence="2"
+              groups="staff_group"/>
+
+</odoo>

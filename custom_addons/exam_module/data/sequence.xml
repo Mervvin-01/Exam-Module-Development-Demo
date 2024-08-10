@@ -1,0 +1,11 @@
+<odoo>
+  <data noupdate="1">
+    <record id="exam_registration_sequence_id" model="ir.sequence">
+      <field name="name">Exam Registration Sequence</field>
+      <field name="code">exam_registration_sequence_code</field>
+      <field name="prefix">EXR</field>
+      <field name="padding">4</field>
+      <field name="number_next">1</field>
+    </record>
+  </data>
+</odoo>

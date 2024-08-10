@@ -1,0 +1,51 @@
+<odoo>
+
+    <!-- Root Menu for Exam Management -->
+    <menuitem id="exam_root_menu"
+              name="Exam Management"
+              sequence="5"/>
+
+    <!-- Submenus under Exam Management -->
+    <menuitem id="exam_student_management_menu"
+              name="Exam"
+              parent="exam_root_menu"
+              action="action_student_exam"
+              sequence="1"
+              groups="student_management.student_group"/>
+
+    <menuitem id="exam_staff_management_menu"
+              name="Exam"
+              parent="exam_root_menu"
+              action="action_staff_exam"
+              sequence="2"
+              groups="student_management.staff_group"/>
+
+    <menuitem id="exam_center_student"
+              name="Exam Center"
+              parent="exam_root_menu"
+              action="action_student_center"
+              sequence="3"
+              groups="student_management.student_group"/>
+
+    <menuitem id="exam_center_staff"
+              name="Exam Center"
+              parent="exam_root_menu"
+              action="action_staff_center"
+              sequence="4"
+              groups="student_management.staff_group"/>
+
+    <menuitem id="menu_exam_registration"
+              name="Exam Registration"
+              parent="exam_root_menu"
+              action="action_exam_registration"
+              sequence="5"
+              groups="student_management.staff_group"/>
+
+    <menuitem id="menu_my_exam_registration"
+              name="My Exam Registration"
+              parent="exam_root_menu"
+              action="action_my_exam_registration"
+              sequence="6"
+              groups="student_management.student_group"/>
+
+</odoo>

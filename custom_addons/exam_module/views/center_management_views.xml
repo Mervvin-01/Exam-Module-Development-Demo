@@ -1,0 +1,67 @@
+<odoo>
+    <!--    Form View-->
+    <record id="view_center_management_form" model="ir.ui.view">
+        <field name="name">center.management.form</field>
+        <field name="model">center.management</field>
+        <field name="arch" type="xml">
+            <form string="Center Management">
+
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="location" required="1"/>
+                            <field name="time_slots"/>
+                            <field name="available_seats"/>
+                        </group>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View -->
+    <record id="view_center_management_tree" model="ir.ui.view">
+        <field name="name">center.management.tree</field>
+        <field name="model">center.management</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="location"/>
+                <field name="time_slots"/>
+                <field name="available_seats"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <!-- Search View -->
+    <record id="view_center_management_search" model="ir.ui.view">
+        <field name="name">center.management.search</field>
+        <field name="model">center.management</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="location"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_staff_center" model="ir.actions.act_window">
+        <field name="name">Center Management</field>
+        <field name="res_model">center.management</field>
+        <field name="view_mode">tree,form</field>
+        <!--        <field name="domain">[(1,'=',1)]</field>-->
+        <field name="groups_id" eval="[(4, ref('student_management.staff_group'))]"/>
+        <field name="search_view_id" ref="view_center_management_search"/>
+    </record>
+
+    <record id="action_student_center" model="ir.actions.act_window">
+        <field name="name">Center Management</field>
+        <field name="res_model">center.management</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'edit': 0,'create': 0, 'delete': 0, 'duplicate': 0}</field>
+        <!--        <field name="domain">[(1,'=',1)]</field>-->
+        <field name="groups_id" eval="[(4, ref('student_management.student_group'))]"/>
+        <field name="search_view_id" ref="view_center_management_search"/>
+    </record>
+
+</odoo>

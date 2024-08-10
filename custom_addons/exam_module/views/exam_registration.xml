@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_exam_registration_tree" model="ir.ui.view">
+        <field name="name">exam.registration.tree</field>
+        <field name="model">exam.registration</field>
+        <field name="arch" type="xml">
+            <tree string="Exam Registration">
+                <field name="name"/>
+                <field name="stu_id"/>
+                <field name="exam_id"/>
+                <field name="center_id"/>
+                <field name="time_slots"/>
+                <field name="date"/>
+                <field name="exam_fee"/>
+                <field name="create_uid"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_exam_registration_form" model="ir.ui.view">
+        <field name="name">exam.registration.form</field>
+        <field name="model">exam.registration</field>
+        <field name="arch" type="xml">
+            <form string="Exam Registration">
+                <header>
+                    <field name="status" widget="statusbar"/>
+                    <button name="action_confirm" string="Confirm" type="object" class="oe_highlight"
+                            invisible="status not in ['draft']"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <label for="name" string="Reference"/>
+                            <h3>
+                                <field class="text-break" name="name" required="1" readonly="1" force_save="1"/>
+                            </h3>
+                            <field name="stu_id" readonly="1"/>
+                            <field name="exam_id"/>
+                            <field name="date"/>
+                        </group>
+                        <group>
+                            <field name="center_id"/>
+                            <field name="time_slots"/>
+                            <field name="exam_fee"/>
+                        </group>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+     <!-- Search View -->
+    <record id="view_exam_registration_search" model="ir.ui.view">
+        <field name="name">exam.registration.search</field>
+        <field name="model">exam.registration</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="stu_id"/>
+                <field name="exam_id"/>
+                <field name="center_id"/>
+                <filter name="group_stu_id" string="Student" domain="[]"
+                        context="{'group_by':'stu_id'}"/>
+                <filter name="group_exam_id" string="Exam" domain="[]" context="{'group_by':'exam_id'}"/>
+                <filter name="group_center_id" string="Center" domain="[]" context="{'group_by':'center_id'}"/>
+                <separator/>
+                <filter name="group_status" string="Status" domain="[]" context="{'group_by':'status'}"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_exam_registration" model="ir.actions.act_window">
+        <field name="name">Exam Registration</field>
+        <field name="res_model">exam.registration</field>
+        <field name="domain">[(1,'=',1)]</field>
+        <field name="view_mode">tree,form</field>
+        <field name="groups_id" eval="[(4, ref('student_management.staff_group'))]"/>
+        <field name="search_view_id" ref="view_exam_registration_search"/>
+
+    </record>
+
+    <record id="action_my_exam_registration" model="ir.actions.act_window">
+        <field name="name">My Exam Registration</field>
+        <field name="res_model">exam.registration</field>
+        <field name="domain">[('create_uid','=', uid)]</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'edit': 1,'create': 1, 'delete': 0, 'duplicate': 0}
+        </field>
+        <field name="groups_id" eval="[(4, ref('student_management.student_group'))]"/>
+        <field name="search_view_id" ref="view_exam_registration_search"/>
+    </record>
+
+
+</odoo>
